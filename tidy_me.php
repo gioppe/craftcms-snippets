@@ -20,7 +20,20 @@ namespace Craft;
 
 		// $arr_id_correlati = array(id, id, etc)
 		craft()->relations->saveRelations( $campo , $entry, $arr_id_correlati );
+	}
 
+	function saveBlock($entry_id, $nome_campo, $blocktype_nome, $arr_dati)
+	{
+		$block = new MatrixBlockModel();
+		$campo_id = craft()->fields->getFieldByHandle($nome_campo)->id;
+		$block->fieldId = $campo_id;
+		$block->ownerId = $entry_id;
+		$block->typeId  = $this->trovaIdBlocco($blocktype_nome, $campo_id);
+
+		$block->getContent()->setAttributes($arr_dati);
+
+		$successo = craft()->matrix->saveBlock($block);
+		return $successo;
 	}
 
 
