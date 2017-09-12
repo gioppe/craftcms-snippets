@@ -1,0 +1,46 @@
+{# all killer #}
+
+{% set entries = craft.entries.section('foo') %}
+
+<div class="wrap">
+
+    {# main loop #}
+    {% for row in entries %}
+        <div class="item"></div>
+    {% endfor %}
+
+    {# invisibile filler loop #}
+    {% set riempi =  (12 - entries|length % 12) %}
+    {% if  riempi == 12 %}{% set riempi = 0 %}{% endif %}
+    {% for row in 1..riempi %}
+        <div class="filler"></div>
+    {% endfor %}
+
+</div>
+
+.wrap {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.item {		
+	flex-grow: 1;
+	flex-basis: 100%;
+	padding: 15px;
+
+	@include media('>=500px'){
+		flex-basis: 50%;
+	}
+
+	@include media('>=800px'){
+		flex-basis: 33%;
+	}
+
+	@include media('>=1200px'){
+		flex-basis: 25%;
+	}
+
+	@include media('>=1600px'){
+		flex-basis: calc(25% / 12);
+	}
+}
