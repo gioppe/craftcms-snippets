@@ -1,5 +1,5 @@
 <?php
 
-// call a service
+// call a service method
 
 $result = PluginName::$instance->serviceName->serviceMethod();
