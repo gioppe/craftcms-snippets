@@ -1,5 +1,6 @@
 <?php
 
+
 // ———————————————————————————
 // Get Entries 
 
@@ -9,8 +10,9 @@ $entry->site($siteHandle);
 // chain parameters...
 $entry->all();
 
+
 // ———————————————————————————
-// Modify and entry
+// Modify an entry
 
 $entry = Entry::find()->id( $myId )->one();
 
