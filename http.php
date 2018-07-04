@@ -1,6 +1,11 @@
 <?php
 
-// get POST parameters
+
+// get query parameters
+
+$get = Craft::$app->request->getQueryParams();
+
+// get POST data
 
 $post = Craft::$app->request->post();    
 
