@@ -4,3 +4,10 @@
 use craft\commerce\Plugin as CraftCommerce;
 
 CraftCommerce::getInstance()->getCountries()->getAllCountries()
+
+// Search variants
+
+  use craft\commerce\elements\Variant;
+
+  $variants = Variant::find()->myField('myValue')->all();
+
