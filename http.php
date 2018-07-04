@@ -1,5 +1,7 @@
 <?php
 
+// Refer to:
+// https://docs.craftcms.com/api/v3/craft-web-request.html
 
 // get query parameters
 
