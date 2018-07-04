@@ -7,9 +7,10 @@
 
 $get = Craft::$app->request->getQueryParams();
 
-// get POST data
-
-$post = Craft::$app->request->post();    
+// get all POST fields
+$post = Craft::$app->request->post();
+// only one 
+$field = Craft::$app->request->post('myField');
 
 // will accept a JSON response?
 
