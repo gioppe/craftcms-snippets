@@ -13,7 +13,10 @@ CraftCommerce::getInstance()->getCountries()->getAllCountries()
 
 // Search variants
 
-  use craft\commerce\elements\Variant;
+use craft\commerce\elements\Variant;
 
-  $variants = Variant::find()->myField('myValue')->all();
+$variants = Variant::find()->myField('myValue')->all();
 
+// get current Customer
+
+$customer = CraftCommerce::getInstance()->getCustomers()->getCustomer();
