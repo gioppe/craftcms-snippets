@@ -20,3 +20,11 @@ $variants = Variant::find()->myField('myValue')->all();
 // get current Customer
 
 $customer = CraftCommerce::getInstance()->getCustomers()->getCustomer();
+
+// add lineItem to Cart
+
+// set true on getCart in order to save it and acquire an id
+$cart = CraftCommerce::getInstance()->getCarts()->getCart(true);
+$lineItem = CraftCommerce::getInstance()->getLineItems()->resolveLineItem($cart->id, $purchasableId, $options, $qty, $notes);
+$cart->addLineItem($lineItem);
+Craft::$app->getElements()->saveElement($cart);
