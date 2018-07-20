@@ -1,5 +1,6 @@
 <?php
 
+use craft\elements\Entry;
 
 // ———————————————————————————
 // Get Entries 
