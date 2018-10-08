@@ -10,7 +10,7 @@ use craft\web\Controller;
 
 class FooController extends Controller
 {
-
+  //  CamelCase translates to snake-case
   protected $allowAnonymous = ['bar', 'baz-quez'];
   
   public function actionBar() {
