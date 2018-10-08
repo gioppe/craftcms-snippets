@@ -42,4 +42,20 @@ $fields = [
   'fieldHandle' => $newFieldValue
 ];
 $product->setFieldValues( $fields );
-Craft::$app->getElements()->saveElement($product);
+
+$product->setVariants([
+    'new1' => [
+        'sku'               => '123',
+        'price'             => (float) $price,
+        'weight'            => '',
+        'length'            => '',
+        'width'             => '',
+        'height'            => '',
+        'hasUnlimitedStock' => true,
+        'minQty'            => '',
+        'maxQty'            => '',
+        'isDefault'         => true
+    ] 
+]);
+
+Craft::$app->elements->saveElement($product);
