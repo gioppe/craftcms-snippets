@@ -28,3 +28,14 @@ $cart = CraftCommerce::getInstance()->getCarts()->getCart(true);
 $lineItem = CraftCommerce::getInstance()->getLineItems()->resolveLineItem($cart->id, $purchasableId, $options, $qty, $notes);
 $cart->addLineItem($lineItem);
 Craft::$app->getElements()->saveElement($cart);
+
+// Create a new product ———————————————————————————————————————————————————————————
+
+$product = new Product();
+$product->typeId = 4;
+$product->siteId = 6;
+$product->enabled = true;
+$product->availableForPurchase = true;
+$product->enabledForSite = true;
+
+Craft::$app->getElements()->saveElement($product);
