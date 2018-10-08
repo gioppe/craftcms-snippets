@@ -32,10 +32,14 @@ Craft::$app->getElements()->saveElement($cart);
 // Create a new product ———————————————————————————————————————————————————————————
 
 $product = new Product();
+$product->title = 'MyFoo';
 $product->typeId = 4;
 $product->siteId = 6;
 $product->enabled = true;
 $product->availableForPurchase = true;
 $product->enabledForSite = true;
-
+$fields = [
+  'fieldHandle' => $newFieldValue
+];
+$product->setFieldValues( $fields );
 Craft::$app->getElements()->saveElement($product);
