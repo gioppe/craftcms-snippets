@@ -31,3 +31,10 @@ $fields = [
 $entry->setFieldValues( $fields );
 
 Craft::$app->getElements()->saveElement( $entry );
+
+// ———————————————————————————
+// Save relationships
+
+$relatedEntries = []; // array of ids
+$field = Craft::$app->fields->getFieldByHandle('fieldHandle');
+Craft::$app->relations->saveRelations($field , $entry, $relatedEntries )
