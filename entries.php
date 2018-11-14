@@ -11,6 +11,15 @@ $entry->site($siteHandle);
 // chain parameters...
 $entry->all();
 
+//———————————————————————————————
+// Create a new entry
+
+$new = new Entry;
+$new->title = 'myTitle';
+$new->sectionId = $sectionId;
+$new->typeId = $typeId;
+$success = Craft::$app->getElements()->saveElement( $new ); 
+
 
 // ———————————————————————————
 // Modify an entry
