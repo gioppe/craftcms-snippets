@@ -16,4 +16,4 @@ use paxxion\pxxplugin\services\Foo as FooService;
 
 // inside Twig templates
 
-{{ craft.postino.foo('bar') }}
+{{ craft.moduleName.foo('bar') }}
