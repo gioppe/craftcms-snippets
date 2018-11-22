@@ -23,3 +23,25 @@ return $this->asJson( $response );
 // no wait, send a redirect instead
 
 $this->redirect( $newRoute );
+
+// Guzzle
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+
+$endpoint = 'http://your-endpoint.com';
+$params['foo'] = 'bar';
+
+$client = new Client([
+  'json' => $params,
+  'headers' => [  
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+  ]
+]);
+
+try {
+  $res = $client->post($endpoint); 
+} catch (RequestException $e) {
+  return false;
+}
+
