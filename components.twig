@@ -1,37 +1,37 @@
-{% macro bottone(params) %}
+{% macro button(params) %}
 	{#
-		testo
+		text
 		url
-		dimensione = xl | l | m | s | xs
-		tipo = conferma | annulla | elimina | spento
+		size = xl | l | m | s | xs
+		action = confirm | cancel | delete | off
 		tag = button | a | div
-		classe = eventuale classe (o classi) custom
+		class = optional custom class(es)
 		attr = []
-		altro = ''
+		other = ''
 	#}
-	{% set testo      = params.testo 		?? 'Azione' %}
-	{% set url        = params.url 			?? null %}
-	{% set dimensione = params.dimensione 	?? null %}
-	{% set tipo       = params.tipo 		?? null %}
-	{% set tag        = params.tag 			?? 'button' %}
-	{% set classe     = params.classe 		?? null %}
-	{% set attr       = params.attr 		?? null %}
-	{% set altro      = params.altro 		?? null %}
+	{% set text     = params.text 	?? 'Do this' %}
+	{% set url      = params.url 	?? null %}
+	{% set size     = params.size 	?? null %}
+	{% set action   = params.action ?? null %}
+	{% set tag      = params.tag 	?? 'button' %}
+	{% set class    = params.class 	?? null %}
+	{% set attr     = params.attr 	?? null %}
+	{% set other    = params.other  ?? null %}
 
-	{# Classe ———————————————————————————————————————————————————————————— #}
-	{% set classe_base = 'bottone--wrap' %}
-	{% set classi = classe_base %}
+	{# class ———————————————————————————————————————————————————————————— #}
+	{% set baseClass = 'button--wrap' %}
+	{% set classes = baseClass %}
 
-	{% if dimensione %}
-		{% set classi = classi ~ ' ' ~ classe_base ~ '__' ~ dimensione %}
+	{% if size %}
+		{% set classes = classes ~ ' ' ~ baseClass ~ '__' ~ size %}
 	{% endif %}
 
-	{% if tipo %}
-		{% set classi = classi ~ ' ' ~ classe_base ~ '__' ~ tipo %}
+	{% if action %}
+		{% set classes = classes ~ ' ' ~ baseClass ~ '__' ~ action %}
 	{% endif %}
 
-	{% if classe %}
-		{% set classi = classi ~ ' ' ~ classe %}
+	{% if class %}
+		{% set classes = classes ~ ' ' ~ class %}
 	{% endif %}
 
 	{# URL ———————————————————————————————————————————————————————————— #}
@@ -39,16 +39,16 @@
 		{% set url = 'href="' ~ url ~ '"' %}
 	{% endif %}
 
-	{# Data-attributi ————————————————————————————————————————————————— #}
+	{# Data-attributes ————————————————————————————————————————————————— #}
 	{% if attr %}
-		{% set attributi = '' %}
+		{% set attributes = '' %}
 		{% for row in attr %}
-			{% set attributi = attributi ~ 'data-' ~ row ~ ' ' %}
+			{% set attributes = attributes ~ 'data-' ~ row ~ ' ' %}
 		{% endfor %}
 	{% endif %}
 
-	{# OUT ————————————————————————————————————————————————— #}
+	{# Go ————————————————————————————————————————————————— #}
 
-	<{{ tag }} class="{{ classi }}" {{ url|raw }} {{ attributi ?? '' }} {{ altro|raw }}>{{ testo }}</{{ tag }}>
+	<{{ tag }} class="{{ classes }}" {{ url|raw }} {{ attributes ?? '' }} {{ other|raw }}>{{ text }}</{{ tag }}>
 
 {% endmacro %}
