@@ -1,0 +1,54 @@
+{% macro bottone(params) %}
+	{#
+		testo
+		url
+		dimensione = xl | l | m | s | xs
+		tipo = conferma | annulla | elimina | spento
+		tag = button | a | div
+		classe = eventuale classe (o classi) custom
+		attr = []
+		altro = ''
+	#}
+	{% set testo      = params.testo 		?? 'Azione' %}
+	{% set url        = params.url 			?? null %}
+	{% set dimensione = params.dimensione 	?? null %}
+	{% set tipo       = params.tipo 		?? null %}
+	{% set tag        = params.tag 			?? 'button' %}
+	{% set classe     = params.classe 		?? null %}
+	{% set attr       = params.attr 		?? null %}
+	{% set altro      = params.altro 		?? null %}
+
+	{# Classe ———————————————————————————————————————————————————————————— #}
+	{% set classe_base = 'bottone--wrap' %}
+	{% set classi = classe_base %}
+
+	{% if dimensione %}
+		{% set classi = classi ~ ' ' ~ classe_base ~ '__' ~ dimensione %}
+	{% endif %}
+
+	{% if tipo %}
+		{% set classi = classi ~ ' ' ~ classe_base ~ '__' ~ tipo %}
+	{% endif %}
+
+	{% if classe %}
+		{% set classi = classi ~ ' ' ~ classe %}
+	{% endif %}
+
+	{# URL ———————————————————————————————————————————————————————————— #}
+	{% if url %}
+		{% set url = 'href="' ~ url ~ '"' %}
+	{% endif %}
+
+	{# Data-attributi ————————————————————————————————————————————————— #}
+	{% if attr %}
+		{% set attributi = '' %}
+		{% for row in attr %}
+			{% set attributi = attributi ~ 'data-' ~ row ~ ' ' %}
+		{% endfor %}
+	{% endif %}
+
+	{# OUT ————————————————————————————————————————————————— #}
+
+	<{{ tag }} class="{{ classi }}" {{ url|raw }} {{ attributi ?? '' }} {{ altro|raw }}>{{ testo }}</{{ tag }}>
+
+{% endmacro %}
