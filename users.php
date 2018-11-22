@@ -1,4 +1,6 @@
 <?php
+// get current user (CONTROLLA)
+// $currentUser = Craft::$app->getUser()->getIdentity();
 
 // check if current logged user is Admin
 Craft::$app->user->getIsAdmin()
