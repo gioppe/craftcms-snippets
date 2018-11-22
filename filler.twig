@@ -8,8 +8,9 @@
     {% endfor %}
 
     {# invisibile filler loop #}
-    {% set riempi =  (12 - entries|length % 12) %}
-    {% if  riempi == 12 %}{% set riempi = 0 %}{% endif %}
+    {% set cols = 12 %}
+    {% set riempi =  (cols - entries|length % cols) %}
+    {% if  riempi == cols %}{% set riempi = 0 %}{% endif %}
     {% for row in 1..riempi %}
         <div class="filler"></div>
     {% endfor %}
