@@ -8,6 +8,7 @@ use craft\elements\Entry;
 $entry = Entry::find();
 $entry->section($mySection);
 $entry->site($siteHandle);
+$entry->customField('foo');
 // chain parameters...
 $entry->all();
 
