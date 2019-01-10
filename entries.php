@@ -44,7 +44,8 @@ Craft::$app->getElements()->saveElement( $entry );
 
 // ———————————————————————————
 // Save relationships
+// also works for Assets
 
 $relatedEntries = []; // array of ids
 $field = Craft::$app->fields->getFieldByHandle('fieldHandle');
-Craft::$app->relations->saveRelations($field , $entry, $relatedEntries )
+Craft::$app->relations->saveRelations($field , $entry, $relatedEntries );
