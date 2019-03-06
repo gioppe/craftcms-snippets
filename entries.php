@@ -21,6 +21,12 @@ $new->sectionId = $sectionId;
 $new->typeId = $typeId;
 $success = Craft::$app->getElements()->saveElement( $new ); 
 
+// Duplicate an entry ———————————————————————————————
+
+$oldEntry = Entry::find()->id($oldId)->one();
+Craft::$app->elements->duplicateElement($oldEntry, [
+  'fieldName' => 'New value for fieldName',
+]);
 
 // ———————————————————————————
 // Modify an entry
