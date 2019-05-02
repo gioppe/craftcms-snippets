@@ -6,7 +6,7 @@ use craft\web\twig\variables\CraftVariable;
 use paxxion\pxxplugin\services\Foo as FooService;
 
  Event::on(
-    CraftVariable::class, 
+    CraftVariable::class, s
     CraftVariable::EVENT_INIT, 
     function(Event $e) {
         /** @var CraftVariable $variable */
@@ -25,5 +25,11 @@ $this->setComponents([
     'fooService' => FooService::class,
 ]);
 
-// elsewhere:
-Pxxplugin::$plugin->fooService->fooMethod(); // $plugin is the instance created inside init(), do not change
+// inside init() you can simply use
+$this->fooService->fooMethod();
+
+// elsewhere
+Pxxplugin::getInstance()->fooService->fooMethod()
+
+// or slightly shorter ($plugin is the instance created inside init(), do not change)
+Pxxplugin::$plugin->fooService->fooMethod(); 
