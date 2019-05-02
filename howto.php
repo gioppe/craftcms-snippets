@@ -1,6 +1,6 @@
-// Access a service from twig 
+// Access a service from twig  ————————————————————————————————————————
 
-// inside main plugin file Pxxplugin.php...
+// register variable inside init() in the main plugin file 
 
 use craft\web\twig\variables\CraftVariable;
 use paxxion\pxxplugin\services\Foo as FooService;
@@ -14,6 +14,16 @@ use paxxion\pxxplugin\services\Foo as FooService;
         $variable->set('foo', FooService::class);
 });
 
-// inside Twig templates
+// then inside Twig templates:
 
 {{ craft.moduleName.foo('bar') }}
+
+// Access a service from plugin  ————————————————————————————————————————
+
+// register component inside init() in the main plugin file 
+$this->setComponents([
+    'fooService' => FooService::class,
+]);
+
+// elsewhere:
+Pxxplugin::$plugin->fooService->fooMethod(); // $plugin is the instance created inside init(), do not change
