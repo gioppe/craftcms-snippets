@@ -31,3 +31,5 @@ $this->fooService->fooMethod();
 // elsewhere ($plugin is the instance created inside init(), do not change)
 Pxxplugin::$plugin->fooService->fooMethod()
 
+// call a helper
+\Craft\helpers\FileHelper::writeToFile();
