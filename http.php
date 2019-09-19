@@ -45,3 +45,6 @@ try {
   return false;
 }
 
+// set CORS-friendly headers
+use craft\web\Response;
+Craft::$app->response->getHeaders()->set('Access-Control-Allow-Origin', '*');
