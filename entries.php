@@ -19,6 +19,7 @@ $new = new Entry;
 $new->title = 'myTitle';
 $new->sectionId = $sectionId;
 $new->typeId = $typeId;
+$new->newParentId = $parentId // if needed
 $success = Craft::$app->getElements()->saveElement( $new ); 
 
 // Duplicate an entry ———————————————————————————————
