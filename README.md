@@ -1,3 +1,3 @@
 ## Welcome
 
-Sometimes Craft CMS assumes you know something that I don't. Here it is.
+Sometimes Craft CMS assumes I know things that I don't. These are some of the things.
