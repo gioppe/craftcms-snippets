@@ -1,3 +1,5 @@
+<?php 
+
 use craft\mail\Message;
 
 $msg = new Message();
