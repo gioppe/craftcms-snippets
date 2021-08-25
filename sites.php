@@ -1,7 +1,10 @@
 <?php
 
 // get current Site:
-$site = Craft::$app->sites->getCurrentSite()->handle
+$site = Craft::$app->sites->getCurrentSite()->handle;
+
+// set current site
+Craft::$app->sites->setCurrentSite('siteHandle');
   
 // get a site
 $site = Craft::$app->sites->getSiteByHandle($siteHandle);
