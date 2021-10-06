@@ -26,3 +26,20 @@ $block->siteId = $siteId;
 		]);
 
 $success = Craft::$app->getElements()->saveElement( $block, true, false );
+
+
+// copy  blocks
+use craft\elements\MatrixBlock;
+
+foreach ($entryA->matrixFieldHandle->all() as $matrixBlockA) {
+    $matrixBlockB = new MatrixBlock();
+    $matrixBlockB->fieldId = $matrixBlockA->fieldId;
+    $matrixBlockB->typeId = $matrixBlockA->typeId;
+    $matrixBlockB->ownerId = $entryB->id;
+    $matrixBlockB->siteId = $entryB->siteId;
+    $matrixBlockB->enabled = $matrixBlockA->enabled;
+    $matrixBlockB->sortOrder = $matrixBlockA->sortOrder;
+    $matrixBlockB->setFieldValues($matrixBlockA->getFieldValues());
+
+    Craft::$app->getElements()->saveElement($matrixBlockB);
+}
