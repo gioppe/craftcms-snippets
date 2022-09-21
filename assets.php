@@ -16,3 +16,7 @@ $out = Craft::$app->getElements()->saveElement($asset);
 // associate to entry
 $field = Craft::$app->fields->getFieldByHandle('imageFieldHandle');
 Craft::$app->relations->saveRelations($field , $entry, $arrayOfAssetIds );
+
+// find physical path
+$fsPath = Craft::getAlias($asset->getVolume()->fs->path);
+$src = $fsPath . DIRECTORY_SEPARATOR . $asset->getPath();
